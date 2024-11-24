@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="a"></p>
+</body>
+<script>
+    let data = document.getElementById('a');
+    fetch('http://127.0.0.1:5000/proxy/schoolInfo',{
+        method:'get',
+        headers:{
+            'content-type':'application/json'
+        }
+    }).then((data) => {
+        return data.json()
+    }).then((data) => {
+        document.getElementById('a').innerHTML = data.schoolInfo[1].row[0].ORG_RDNMA;
+    });
+</script>
+</html>
